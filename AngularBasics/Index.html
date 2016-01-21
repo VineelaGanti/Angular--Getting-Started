@@ -1,0 +1,73 @@
+﻿Exampl1:
+
+<!DOCTYPE html>
+<html data-ng-app="">
+<head>
+    <title>Angular Demo</title>
+    <script src="app/Libs/angular.min.js"></script>
+</head>
+<body>
+    <div id="maincontent" >
+            <h1>Angular Demo</h1>
+            <form>
+                Name : <input id="txtname"  name="txtname" data-ng-model="name" /> <br /> 
+                <h2>Hello...{{name}}</h2>
+                <p ng-bind="name"></p>
+            </form>
+    </div>
+    <div id="footer">
+        &copy; Marlabs-2015
+    </div>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app>
+<head>
+    <title> directives</title>
+    <script src="app/Libs/angular.min.js"></script>
+</head>
+<body>
+    <div id="content" ng-init="names=['james','scott','satya','john','alice']">
+        Search: <input type="text" ng-model="query" /> <br />
+
+        <ul ng-repeat="name in names |filter:query |orderBy:name ">
+            <li>{{name | uppercase}}</li>
+        </ul>
+    </div>
+
+
+    <div id="contacts" ng-init="persons=[{name:'satya',city:'edison',email:'satya@gmail.com'},{name:'john',city:'at',email:'john@gmail.com'}]">
+        Search: <input type="text" ng-model="filter.query" />
+        <br />
+        Order By : <select ng-model="orderProperty">
+                        <option>name</option>
+                        <option>city</option>
+                         <option>email</option>
+                   </select>
+        <br />
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>City</th>
+                <th>Email</th>
+            </tr>
+            <tr ng-repeat="person in persons |filter:filter.query |orderBy:orderProperty">
+                <td>{{person.name}}</td>
+                <td>{{person.city}}</td>
+                <td>{{person.email}}</td>
+            </tr>
+        </table>
+    </div>
+
+
+
+    <div ng-init="qty=1;cost=2"> <b>Invoice:</b> <div> Quantity: <input type="number" min="0" ng-model="qty"> </div> <div> Costs: <input type="number" min="0" ng-bind="cost"> </div> <div> <b>Total:</b> {{qty * cost | currency}} 
+
+
+        <span ng-bind="cost"></span>
+                                                                                                                                                                                      </div> </div>
+
+</body>
+</html>
